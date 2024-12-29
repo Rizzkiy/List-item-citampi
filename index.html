@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Item</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>List Item Kesukaan Warga Citampi Stories</h1>
+        <input
+        type="text"
+        id="searchBox"
+        placeholder="Cari warga atau item..."
+        oninput="filterData()"
+        />
+        <ul id="dataList">
+            <li>
+                <strong>Nama:</strong> Alex<br>
+                <strong>Spesial:</strong> Topi<br>
+                <strong>Favorit:</strong> Kalung, All steak, ikan pelangi
+            </li>
+            <li>
+                <strong>Nama:</strong> Arpat / Firman<br>
+                <strong>Spesial:</strong> CD, sepatu kulit<br>
+                <strong>Favorit:</strong> All steak, ikan pelangi, radio, headphone
+            </li>
+            <li>
+                <strong>Nama:</strong> Tigor<br>
+                <strong>Spesial:</strong> -<br>
+                <strong>Favorit:</strong> Sirlain steak, ikan pelangi, bayam, teko
+            </li>
+            <li>
+                <strong>Nama:</strong> Bu Noer<br>
+                <strong>Spesial:</strong> -<br>
+                <strong>Favorit:</strong> kopi, kalung, seblak, ikan pelangi, jam weker
+            </li>
+            <li>
+                <strong>Nama:</strong> Bu Tuti<br>
+                <strong>Spesial:</strong> kalung<br>
+                <strong>Favorit:</strong> wajan, cangkir, sisir, setrika
+            </li>
+            <li>
+                <strong>Nama:</strong> Citra [GF]<br>
+                <strong>Spesial:</strong> -<br>
+                <strong>Favorit:</strong> Headphone, T-bone steak, buah
+            </li>
+            <li>
+                <strong>Nama:</strong> Dimas<br>
+                <strong>Spesial:</strong> Jam weker<br>
+                <strong>Favorit:</strong> sayuran, buah ( kecuali apel )
+            </li>
+
+            <li>
+                <strong>Nama:</strong> Teh imas [GF-E]<br>
+                <strong>Spesial:</strong> kalung, kosmetik<br>
+                <strong>Favorit:</strong> sisir, bakso
+            </li>
+            <li>
+                <strong>Nama:</strong> Indah [GF]<br>
+                <strong>Spesial:</strong> -<br>
+                <strong>Favorit:</strong> Jarum, sayuran
+            </li>
+            <li>
+                <strong>Nama:</strong> Isma [GF]<br>
+                <strong>Spesial:</strong> -<br>
+                <strong>Favorit:</strong> keranjang, wajan, cangkir, sisir, setrika
+            </li>
+            <li>
+                <strong>Nama:</strong> Jessica [GF]<br>
+                <strong>Spesial:</strong> -<br>
+                <strong>Favorit:</strong> seblak, topi
+            </li>
+            <li>
+                <strong>Nama:</strong> Kak Seno<br>
+                <strong>Spesial:</strong> sepatu kulit<br>
+                <strong>Favorit:</strong> Arloji kulit, kacamata, kipas angin, radio
+            </li>
+            <li>
+                <strong>Nama:</strong> Lina [SD]<br>
+                <strong>Spesial:</strong> Kalung, ikan pelangi, kinder joy<br>
+                <strong>Favorit:</strong> cilok, seblak, tahu bulat
+            </li>
+            <li>
+                <strong>Nama:</strong> Milah [GF]<br>
+                <strong>Spesial:</strong> kalung<br>
+                <strong>Favorit:</strong> ikan emas, ikan lele, ikan mujair, ikan pelangi, gurame, tutu, kacamata, kipas, wajan, radio, sisir
+            </li>
+            <li>
+                <strong>Nama:</strong> Lelasari<br>
+                <strong>Spesial:</strong> kalung<br>
+                <strong>Favorit:</strong> kipas angin, wajan, lampu hias, setrika, jarum
+            </li>
+            <li>
+                <strong>Nama:</strong> Nabila [GF]<br>
+                <strong>Spesial:</strong> kalung, ikan sapu-sapu<br>
+                <strong>Favorit:</strong> sisir, setrika
+            </li>
+            <li>
+                <strong>Nama:</strong> Annissa [GF]<br>
+                <strong>Spesial:</strong> ikan pelangi, kinder joy<br>
+                <strong>Favorit:</strong> cilok, tahu bulat
+            </li>
+            <li>
+                <strong>Nama:</strong> Pak Nopandi<br>
+                <strong>Spesial:</strong> -<br>
+                <strong>Favorit:</strong> ikan pelangi, teko
+            </li>
+            <li>
+                <strong>Nama:</strong> Pak Soleh<br>
+                <strong>Spesial:</strong> -<br>
+                <strong>Favorit:</strong> gorengan, ikan pelangi
+            </li>
+            <li>
+                <strong>Nama:</strong> Pak Tatang<br>
+                <strong>Spesial:</strong> All steak, sepatu kulit<br>
+                <strong>Favorit:</strong> Arloji kulit, setrika, topi, jam weker
+            </li>
+            <li>
+                <strong>Nama:</strong> Rara [SD]<br>
+                <strong>Spesial:</strong> kalung, ikan pelangi, kinder joy<br>
+                <strong>Favorit:</strong> cilok, seblak, tahu bulat
+            </li>
+            <li>
+                <strong>Nama:</strong> Sarah [GF]<br>
+                <strong>Spesial:</strong> kalung, kosmetik<br>
+                <strong>Favorit:</strong> keranjang, sisir
+            </li>
+            <li>
+                <strong>Nama:</strong> Shelli [SD]<br>
+                <strong>Spesial:</strong> kalung, ikan pelangi, kinder joy<br>
+                <strong>Favorit:</strong> cilok, seblak, tahu bulat, gorengan
+            </li>
+            <li>
+                <strong>Nama:</strong> Tasya [GF]<br>
+                <strong>Spesial:</strong> cangkir, kura-kura<br>
+                <strong>Favorit:</strong> kopi, setrika, keranjang, sisir, sayuran
+            </li>
+            <li>
+                <strong>Nama:</strong> Pak Tio<br>
+                <strong>Spesial:</strong> jam weker<br>
+                <strong>Favorit:</strong> kopi, CD, sepatu kulit, teko
+            </li>
+            <li>
+                <strong>Nama:</strong> Pak ustadz Didi<br>
+                <strong>Spesial:</strong> -<br>
+                <strong>Favorit:</strong> teko, bakso
+            </li>
+            <li>
+                <strong>Nama:</strong> Windy [GF]<br>
+                <strong>Spesial:</strong> sepatu<br>
+                <strong>Favorit:</strong> All steak
+            </li>
+            <li>
+                <strong>Nama:</strong> Suciasih [GF-H]<br>
+                <strong>Spesial:</strong> paku, sapu<br>
+                <strong>Favorit:</strong> kopi, sisir
+            </li>
+            <li>
+                <strong>Nama:</strong> Mbah Sen<br>
+                <strong>Spesial:</strong> kalung, kosmetik, radio<br>
+                <strong>Favorit:</strong> ikan arwana, ikan koi, Arloji kulit, sepatu kulit
+            </li>
+        </ul>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
