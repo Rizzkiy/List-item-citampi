@@ -1,0 +1,102 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #1A1A1A;
+  color: #fff;
+}
+
+header {
+  background-color: #1A1A1A;
+  padding: 20px;
+  text-align: center;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#search-input {
+  padding: 10px;
+  border: none;
+  border-radius: 15px;
+  width: 300px;
+  background-color: #000000;
+  color: #fff;
+  box-shadow: 0 0 30px rgba(255, 0, 0, 0.9), 0 0 40px rgba(0, 255, 0, 0.9), 0 0 50px rgba(0, 0, 255, 0.9);
+}
+
+#search-button {
+  padding: 10px;
+  border: none;
+  border-radius: 15px;
+  background-color: #555;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 0 30px rgba(255, 0, 0, 0.9), 0 0 40px rgba(0, 255, 0, 0.9), 0 0 50px rgba(0, 0, 255, 0.9);
+}
+
+.data {
+  background-color: #000000;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(255, 0, 0, 0.9), 0 0 40px rgba(0, 255, 0, 0.9), 0 0 50px rgba(0, 0, 255, 0.9);
+  transition: all 0.3s ease-in-out;
+}
+
+.data:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 40px rgba(255, 0, 0, 0.9), 0 0 50px rgba(0, 255, 0, 0.9), 0 0 60px rgba(0, 0, 255, 0.9);
+}
+
+@keyframes rgb-animation {
+  0% {
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.9), 0 0 40px rgba(0, 255, 0, 0.9), 0 0 50px rgba(0, 0, 255, 0.9);
+  }
+  33% {
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.9), 0 0 40px rgba(0, 0, 255, 0.9), 0 0 50px rgba(255, 0, 0, 0.9);
+  }
+  66% {
+    box-shadow: 0 0 30px rgba(0, 0, 255, 0.9), 0 0 40px rgba(255, 0, 0, 0.9), 0 0 50px rgba(0, 255, 0, 0.9);
+  }
+  100% {
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.9), 0 0 40px rgba(0, 255, 0, 0.9), 0 0 50px rgba(0, 0, 255, 0.9);
+  }
+}
+
+.data-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.data img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+.hidden {
+  display: none;
+}
+
+#search-input, #search-button, .data {
+  animation: rgb-animation 3s infinite;
+}
+
+@keyframes rgb-animation {
+  0% {
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5), 0 0 20px rgba(0, 255, 0, 0.5), 0 0 30px rgba(0, 0, 255, 0.5);
+  }
+  33% {
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5), 0 0 20px rgba(0, 0, 255, 0.5), 0 0 30px rgba(255, 0, 0, 0.5);
+  }
+  66% {
+    box-shadow: 0 0 10px rgba(0, 0, 255, 0.5), 0 0 20px rgba(255, 0, 0, 0.5), 0 0 30px rgba(0, 255, 0, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5), 0 0 20px rgba(0, 255, 0, 0.5), 0 0 30px rgba(0, 0, 255, 0.5);
+  }
+}
