@@ -1,5 +1,5 @@
 function filterData() {
-    const input = document.getElementById("searchBox").value.toLowerCase();
+    const input = document.getElementById("search-box").value.toLowerCase();
     const items = document.querySelectorAll("#dataList li");
 
     items.forEach((item) => {
