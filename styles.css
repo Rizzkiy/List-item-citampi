@@ -3,21 +3,21 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #000000;
 }
 
 .container {
     max-width: 600px;
     margin: 50px auto;
     padding: 20px;
-    background: #fff;
+    background: #1A1A1A;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
     text-align: center;
-    color: #333;
+    color: #FFFFFF;
 }
 
 .peringatan {
@@ -32,15 +32,33 @@ img {
     height: auto;
 }
 
-#searchBox {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    transition: box-shadow 0.3s ease-in-out;
+#search-box {
+  padding: 15px;
+  width: 100%;
+  border: none;
+  border-radius: 30px;
+  background-color: #000000;
+  color: #B0B0B0;
+  box-shadow: 0 0 30px rgba(255, 0, 0, 0.9), 0 0 40px rgba(0, 255, 0, 0.9), 0 0 50px rgba(0, 0, 255, 0.9);
+  outline: none;
+  animation: rgb-animation 3s infinite;
 }
+
+@keyframes rgb-animation {
+  0% {
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.9), 0 0 40px rgba(0, 255, 0, 0.9), 0 0 50px rgba(0, 0, 255, 0.9);
+  }
+  33% {
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.9), 0 0 40px rgba(0, 0, 255, 0.9), 0 0 50px rgba(255, 0, 0, 0.9);
+  }
+  66% {
+    box-shadow: 0 0 30px rgba(0, 0, 255, 0.9), 0 0 40px rgba(255, 0, 0, 0.9), 0 0 50px rgba(0, 255, 0, 0.9);
+  }
+  100% {
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.9), 0 0 40px rgba(0, 255, 0, 0.9), 0 0 50px rgba(0, 0, 255, 0.9);
+  }
+}
+
 
 #searchBox:focus {
     box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
@@ -55,7 +73,7 @@ img {
 #dataList li {
     padding: 15px;
     border-bottom: 1px solid #ddd;
-    color: #555;
+    color: #FFFFFF;
     line-height: 1.8;
     opacity: 0;
     /* Start hidden */
@@ -77,4 +95,8 @@ img {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+.tombol-kanan {
+  text-align: right;
 }
