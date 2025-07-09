@@ -1,190 +1,419 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>List item </title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Daftar Karakter</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .logo {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+        }
+        
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .search-container {
+            flex: 1;
+            max-width: 500px;
+        }
+        
+        .search-box {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s;
+        }
+        
+        .search-box:focus {
+            border-color: #e74c3c;
+            box-shadow: 0 0 5px rgba(231, 76, 60, 0.3);
+        }
+        
+        .character-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+        }
+        
+        .character-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .character-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .character-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .character-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+            border: 2px solid #e74c3c;
+        }
+        
+        .character-name {
+            flex: 1;
+        }
+        
+        .character-card h2 {
+            color: #e74c3c;
+            margin-bottom: 5px;
+            font-size: 1.5rem;
+        }
+        
+        .character-card h3 {
+            color: #666;
+            font-weight: normal;
+            font-size: 1.1rem;
+        }
+        
+        .character-card hr {
+            border: none;
+            border-top: 1px dashed #ddd;
+            margin: 15px 0;
+        }
+        
+        .character-card p {
+            margin-bottom: 10px;
+        }
+        
+        .character-card strong {
+            color: #333;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 50px;
+            color: #666;
+            font-size: 1.2rem;
+            grid-column: 1 / -1;
+        }
+        
+        .highlight {
+            background-color: #ffeb3b;
+            padding: 0 2px;
+            border-radius: 3px;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <img src="Logo_game_developer_ikan_asin_production.png" alt="Ikan Asin icon" />
-        <div style="text-align: center;">
-            <a href="https://www.ikanasinproduction.com/" style="color: #A5522F;">www.ikanasinproduction.com</a>
+    <div class="header">
+        <div class="logo">
+            <img src="https://rizzkiy.github.io/List-item-citampi/Logo_game_developer_ikan_asin_production.png" alt="Logo">
         </div>
-        <h2>List Item Kesukaan Warga Citampi Stories</h2>
-        <input
-        type="text"
-        id="search-box"
-        placeholder="Cari warga atau item..."
-        oninput="filterData()"
-        />
-        <ul id="dataList">
-            <li>
-                <strong>Nama:</strong> Alex<br>
-                <strong>Spesial:</strong> Topi<br>
-                <strong>Favorit:</strong> Kalung, All steak, ikan pelangi
-            </li>
-            <li>
-                <strong>Nama:</strong> Arpat / Firman<br>
-                <strong>Spesial:</strong> CD, sepatu kulit<br>
-                <strong>Favorit:</strong> All steak, ikan pelangi, radio, headphone
-            </li>
-            <li>
-                <strong>Nama:</strong> Tigor<br>
-                <strong>Spesial:</strong> -<br>
-                <strong>Favorit:</strong> Sirlain steak, ikan pelangi, bayam, teko
-            </li>
-            <li>
-                <strong>Nama:</strong> Bu Noer<br>
-                <strong>Spesial:</strong> -<br>
-                <strong>Favorit:</strong> kopi, kalung, seblak, ikan pelangi, jam weker
-            </li>
-            <li>
-                <strong>Nama:</strong> Bu Tuti<br>
-                <strong>Spesial:</strong> kalung<br>
-                <strong>Favorit:</strong> wajan, cangkir, sisir, setrika
-            </li>
-            <li>
-                <strong>Nama:</strong> Citra [GF]<br>
-                <strong>Spesial:</strong> -<br>
-                <strong>Favorit:</strong> Headphone, T-bone steak, buah
-            </li>
-            <li>
-                <strong>Nama:</strong> Dimas<br>
-                <strong>Spesial:</strong> Jam weker<br>
-                <strong>Favorit:</strong> sayuran, buah ( kecuali apel )
-            </li>
-            <li>
-                <strong>Nama:</strong> Teh imas [GF-E]<br>
-                <strong>Spesial:</strong> kalung, kosmetik<br>
-                <strong>Favorit:</strong> sisir, bakso
-            </li>
-            <li>
-                <strong>Nama:</strong> Indah [GF]<br>
-                <strong>Spesial:</strong> -<br>
-                <strong>Favorit:</strong> Jarum, sayuran
-            </li>
-            <li>
-                <strong>Nama:</strong> Isma [GF]<br>
-                <strong>Spesial:</strong> -<br>
-                <strong>Favorit:</strong> keranjang, wajan, cangkir, sisir, setrika
-            </li>
-            <li>
-                <strong>Nama:</strong> Jessica [GF]<br>
-                <strong>Spesial:</strong> -<br>
-                <strong>Favorit:</strong> seblak, topi
-            </li>
-            <li>
-                <strong>Nama:</strong> Kak Seno<br>
-                <strong>Spesial:</strong> sepatu kulit<br>
-                <strong>Favorit:</strong> Arloji kulit, kacamata, kipas angin, radio
-            </li>
-            <li>
-                <strong>Nama:</strong> Lina [SD]<br>
-                <strong>Spesial:</strong> Kalung, ikan pelangi, kinder joy<br>
-                <strong>Favorit:</strong> cilok, seblak, tahu bulat
-            </li>
-            <li>
-                <strong>Nama:</strong> Milah [GF]<br>
-                <strong>Spesial:</strong> kalung<br>
-                <strong>Favorit:</strong> ikan emas, ikan lele, ikan mujair, ikan pelangi, gurame, tutu, kacamata, kipas, wajan, radio, sisir
-            </li>
-            <li>
-                <strong>Nama:</strong> Lelasari<br>
-                <strong>Spesial:</strong> kalung<br>
-                <strong>Favorit:</strong> kipas angin, wajan, lampu hias, setrika, jarum
-            </li>
-            <li>
-                <strong>Nama:</strong> Nabila [GF]<br>
-                <strong>Spesial:</strong> kalung, ikan sapu-sapu<br>
-                <strong>Favorit:</strong> sisir, setrika
-            </li>
-            <li>
-                <strong>Nama:</strong> Annissa [GF]<br>
-                <strong>Spesial:</strong> ikan pelangi, kinder joy<br>
-                <strong>Favorit:</strong> cilok, tahu bulat
-            </li>
-            <li>
-                <strong>Nama:</strong> Pak Nopandi<br>
-                <strong>Spesial:</strong> -<br>
-                <strong>Favorit:</strong> ikan pelangi, teko
-            </li>
-            <li>
-                <strong>Nama:</strong> Pak Soleh<br>
-                <strong>Spesial:</strong> -<br>
-                <strong>Favorit:</strong> gorengan, ikan pelangi
-            </li>
-            <li>
-                <strong>Nama:</strong> Pak Tatang<br>
-                <strong>Spesial:</strong> All steak, sepatu kulit<br>
-                <strong>Favorit:</strong> Arloji kulit, setrika, topi, jam weker
-            </li>
-            <li>
-                <strong>Nama:</strong> Rara [SD]<br>
-                <strong>Spesial:</strong> kalung, ikan pelangi, kinder joy<br>
-                <strong>Favorit:</strong> cilok, seblak, tahu bulat
-            </li>
-            <li>
-                <strong>Nama:</strong> Sarah [GF]<br>
-                <strong>Spesial:</strong> kalung, kosmetik<br>
-                <strong>Favorit:</strong> keranjang, sisir
-            </li>
-            <li>
-                <strong>Nama:</strong> Shelli [SD]<br>
-                <strong>Spesial:</strong> kalung, ikan pelangi, kinder joy<br>
-                <strong>Favorit:</strong> cilok, seblak, tahu bulat, gorengan
-            </li>
-            <li>
-                <strong>Nama:</strong> Tasya [GF]<br>
-                <strong>Spesial:</strong> cangkir, kura-kura<br>
-                <strong>Favorit:</strong> kopi, setrika, keranjang, sisir, sayuran
-            </li>
-            <li>
-                <strong>Nama:</strong> Pak Tio<br>
-                <strong>Spesial:</strong> jam weker<br>
-                <strong>Favorit:</strong> kopi, CD, sepatu kulit, teko
-            </li>
-            <li>
-                <strong>Nama:</strong> Pak ustadz Didi<br>
-                <strong>Spesial:</strong> -<br>
-                <strong>Favorit:</strong> teko, bakso
-            </li>
-            <li>
-                <strong>Nama:</strong> Windy [GF]<br>
-                <strong>Spesial:</strong> sepatu<br>
-                <strong>Favorit:</strong> All steak
-            </li>
-            <li>
-                <strong>Nama:</strong> Suciasih [GF-H]<br>
-                <strong>Spesial:</strong> paku, sapu<br>
-                <strong>Favorit:</strong> kopi, sisir<br />
-                <strong>Tempat:</strong> Sen-2, Sel-4, Rab-1, Kam-1, Jum-4, Sab-3,Min-6<br />
-                <strong>Tempat-E</strong> H1-1-Kam, H2-OMG-Sab, H3-2-Sen
-            </li>
-            <li>
-                <strong>Nama:</strong> Mbah Sen<br>
-                <strong>Spesial:</strong> kalung, kosmetik, radio<br>
-                <strong>Favorit:</strong> ikan arwana, ikan koi, Arloji kulit, sepatu kulit
-            </li>
-            <li>
-                <strong>Hewan:</strong> Kucing<br />
-                <strong>Spesial:</strong> Ikan Louhan<br />
-                <strong>Favorit:</strong> Ikan pelangi, bala-bala, pari, pemanah
-            </li>
-            <li>
-                <strong>Hewan:</strong> Anjing<br />
-                <strong>Spesial:</strong> Ayam crispy, T-bone steak, Sirlain steak<br />
-                <strong>Favorit:</strong> Chicken nugget
-            </li>
-        </ul>
-        <p class="peringatan">
-            <strong>Catatan!</strong><br />List item di sini itu murni dari pendapat saya jadi kalau ada item yang kurang saya <strong>minta maaf!</strong>
-        </p>
-        <div class="tombol-kanan">
-            <a href="https://rizzkiy.github.io/Crafting-item/" style="color : #A5522F;">Crafting-item</a>
+        <div class="search-container">
+            <input type="text" class="search-box" placeholder="Cari nama karakter...">
         </div>
     </div>
-    <script src="script.js"></script>
+    
+    <div class="character-list" id="characterList">
+        <!-- Karakter akan dimuat di sini melalui JavaScript -->
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchBox = document.querySelector('.search-box');
+            const characterList = document.getElementById('characterList');
+            
+            // Data karakter dengan gambar avatar
+            const characters = [
+                {
+                    name: "Atep/Alex",
+                    subtitle: "Lexmana.",
+                    specialItems: "Ikan Discus, Topi, Buku Komik",
+                    favoriteItems: "ALL Steak, Ikan Pelangi",
+                    avatar: "Warga Citampi/Alex.jpg"
+                },
+                {
+                    name: "Arpat",
+                    subtitle: "Firman.",
+                    specialItems: "CD, Sepatu Kulit",
+                    favoriteItems: "ALL Steak, Ikan Pelangi, Radio, Headphone",
+                    avatar: "Warga Citampi/Arpat.jpg"
+                },
+                {
+                    name: "Tigor",
+                    subtitle: "S.",
+                    specialItems: "Jam Tangan, Sepatu, Keong Mas",
+                    favoriteItems: "Bunga, Ikan Pelangi, Teko, Bayam",
+                    avatar: "Warga Citampi/Tigor.jpg"
+                },
+                {
+                    name: "Noer",
+                    subtitle: "Rohmah.",
+                    specialItems: "Tas Tangan, Taperware",
+                    favoriteItems: "Kopi, Seblak, Ikan Belida, Ikan Pelangi, Jam Waker",
+                    avatar: "Warga Citampi/Noer.jpg"
+                },
+                {
+                    name: "Tuti",
+                    subtitle: "Mutia.",
+                    specialItems: "Parfum, Kalung, Kosmetik",
+                    favoriteItems: "Bunga, Wajan, Cangkir, Sisir, Setrika",
+                    avatar: "Warga Citampi/Tuti.jpg"
+                },
+                {
+                    name: "Citra",
+                    subtitle: "Amalia Putri.",
+                    specialItems: "Parfum, Ikan Patin",
+                    favoriteItems: "Coklat, Majalah Cewek, Ikan Pelangi, Headphone, Buah, Mie Ayam, Buku Komik",
+                    avatar: "Gadis Citampi/Citra1.jpg"
+                },
+                {
+                    name: "Dimas",
+                    subtitle: "Taufik.",
+                    specialItems: "Jam Waker",
+                    favoriteItems: "Buah (Kecuali Apel), Sayuran",
+                    avatar: "Warga Citampi/Dimas.jpg"
+                },
+                {
+                    name: "Imas",
+                    subtitle: "Nurullatifa.",
+                    specialItems: "Parfum, Kalung, Kosmetik Taperware",
+                    favoriteItems: "Bunga, Ikan pelangi, Sisir, Bakso",
+                    avatar: "Gadis Citampi/Imas1.jpg"
+                },
+                {
+                    name: "Indah",
+                    subtitle: "Putri Savitri.",
+                    specialItems: "Ikan Patin, Kain, Taperware",
+                    favoriteItems: "Bunga, Seblak, Jarum, Sayuran",
+                    avatar: "Gadis Citampi/Indah1.jpg"
+                },
+                {
+                    name: "Isma",
+                    subtitle: "Nur Ainnisa.",
+                    specialItems: "Parfum, Kosmetik, Ikan Bala-Bala, Taperware",
+                    favoriteItems: "Coklat, Bunga, Majalah Cewek, ALL Steak, Ikan Pelangi, Keranjang, Wajan, Cangkir, Sisir, Setrika",
+                    avatar: "Gadis Citampi/Isma1.jpg"
+                },
+                {
+                    name: "Jessica",
+                    subtitle: "Althanissa.",
+                    specialItems: "Ark Book, Lukisan",
+                    favoriteItems: "Minuman Energi, Coklat, Seblak, Ikan Pelangi, Topi",
+                    avatar: "Gadis Citampi/Jessica1.jpg"
+                },
+                {
+                    name: "Julia",
+                    subtitle: "Ferderica Mangunkarto.",
+                    specialItems: "Patung Kuno, Tas Tangan, Pena Fountain",
+                    favoriteItems: "Ikan Arwana, Ikan Pelangi, Apel, Melon, Jeruk, Skripsi Gagal, Pisang",
+                    avatar: "Gadis Citampi/Julia1.jpg"
+                },
+                {
+                    name: "Seno",
+                    subtitle: "Suryo.",
+                    specialItems: "Ikan Gabus, Sepatu Kulit",
+                    favoriteItems: "Arloji Kulit, Kacamata, Kipas Angin",
+                    avatar: "Warga Citampi/Seno.jpg"
+                },
+                {
+                    name: "Lina",
+                    subtitle: "Lesmana.",
+                    specialItems: "Kalung, Ikan Pelangi, Surprise Egg",
+                    favoriteItems: "Bunga, Gorengan, Cilok, Seblak, Tahu Bulat",
+                    avatar: "Warga Citampi/Lina.jpg"
+                },
+                {
+                    name: "Milah",
+                    subtitle: "Sarmilah.",
+                    specialItems: "Kalung, Ikan Bala-Bala, Taperware",
+                    favoriteItems: "Cilok, Seblak, Ikan Lele, Ikan Mas, Gurame, Ikan Tawes, Ikan Patin, Tutut, Ikan Nila, Ikan Mujair, Ikan Pelangi, Belut, Kacamata, Kipas, Wajan, Sisir, Jengkol",
+                    avatar: "Gadis Citampi/Milah.jpg"
+                },
+                {
+                    name: "Lela",
+                    subtitle: "Sari.",
+                    specialItems: "Parfum, Kalung, Kosmetik",
+                    favoriteItems: "Bunga, Ikan Pelangi, Kipas Angin, Wajan, Setrika, Jarum",
+                    avatar: "Warga Citampi/Lela.jpg"
+                },
+                {
+                    name: "Nabila",
+                    subtitle: "Resyaliani.",
+                    specialItems: "Kalung, Ikan Sapu Sapu",
+                    favoriteItems: "Coklat, Bunga, ALL Steak, Ikan Pelangi, Sisir, Setrika",
+                    avatar: "Gadis Citampi/Nabila1.jpg"
+                },
+                {
+                    name: "Annissa",
+                    subtitle: "Lavika.",
+                    specialItems: "Coklat, Ikan Pelangi, Surprise Egg",
+                    favoriteItems: "Es Krim, Cilok, Tahu Bulat, Kentang Goreng",
+                    avatar: "Gadis Citampi/Nissa.jpg"
+                },
+                {
+                    name: "Ian",
+                    subtitle: "Nopandi.",
+                    specialItems: "Jam Tangan, Sepatu",
+                    favoriteItems: "ALL Steak, Ikan Pelangi, Teko, Ayam Crispy",
+                    avatar: "Warga Citampi/Nopandi.jpg"
+                },
+                {
+                    name: "Soleh",
+                    subtitle: "Abidin.",
+                    specialItems: "Grilled Salmon, Ikan Patin",
+                    favoriteItems: "Gorengan, Ikan Pelangi, Belut, Chicken Nugget",
+                    avatar: "Warga Citampi/Soleh.jpg"
+                },
+                {
+                    name: "Tatang",
+                    subtitle: "Suratang.",
+                    specialItems: "ALL Steak, Sepatu Kulit, Taperware",
+                    favoriteItems: "Gorengan, Cilok, Seblak, Ikan  Pelangi, Arloji Kulit, Setrika, Topi, Jam Waker, Chicken Nugget",
+                    avatar: "Warga Citampi/Tatang.jpg"
+                },
+                {
+                    name: "Rara",
+                    subtitle: "Anindra.",
+                    specialItems: "Kalung, Ikan Pelangi, Surprise Egg",
+                    favoriteItems: "Bunga, Gorengan, Cilok, Seblak, Tahu Bulat, Chicken Nugget",
+                    avatar: "Warga Citampi/Rara.jpg"
+                },
+                {
+                    name: "Sarah",
+                    subtitle: "Angelia.",
+                    specialItems: "Kalung, Kosmetik, Kuas",
+                    favoriteItems: "Coklat, Bunga, ALl Steak, Ikan Pelangi, Keranjang, Sisir, Kain, Kentang Goreng",
+                    avatar: "Gadis Citampi/Sarah.jpg"
+                },
+                {
+                    name: "Shelli",
+                    subtitle: "Nurahman.",
+                    specialItems: "Kalung, Ikan Pelangi, Surprise Egg",
+                    favoriteItems: "Bunga, Gorengan, Cilok, Seblak, Tahu Bulat, Ayam Crispy",
+                    avatar: "Warga Citampi/Shelli.jpg"
+                },
+                {
+                    name: "Tasya",
+                    subtitle: "Wulandari.",
+                    specialItems: "Kura Kura, Cangkir",
+                    favoriteItems: "Kopi, Coklat, Ikan Pelangi, Keranjang, Sisir, Setrika, Sayuran",
+                    avatar: "Gadis Citampi/Tasya.jpg"
+                },
+                {
+                    name: "Tio",
+                    subtitle: "Nurcahyo",
+                    specialItems: "Ikan Belida, Jam Waker",
+                    favoriteItems: "Kopi, Minuman Energi, Ikan Pelangi, CD, Sepatu Kulit, Teko",
+                    avatar: "Warga Citampi/Tio.jpg"
+                },
+                {
+                    name: "Didi",
+                    subtitle: "Cahyadi.",
+                    specialItems: "Jam Tangan, Sepatu",
+                    favoriteItems: "Ikan Pelangi, Teko, Bakso",
+                    avatar: "Warga Citampi/Didi.jpg"
+                },
+                {
+                    name: "Windy",
+                    subtitle: "Lestari.",
+                    specialItems: "Jam Tangan, Sepatu",
+                    favoriteItems: "ALL Steak, Ikan Pelangi, Buku Komik",
+                    avatar: "Gadis Citampi/Windy.jpg"
+                },
+                // Anda bisa menambahkan lebih banyak karakter di sini
+            ];
+            
+            // Fungsi untuk menampilkan karakter
+            function displayCharacters(filter = '') {
+                characterList.innerHTML = '';
+                
+                const filteredChars = characters.filter(character => 
+                    character.name.toLowerCase().includes(filter.toLowerCase()) || 
+                    character.subtitle.toLowerCase().includes(filter.toLowerCase())
+                );
+                
+                if (filteredChars.length === 0) {
+                    characterList.innerHTML = '<div class="no-results">Tidak ada karakter yang cocok dengan pencarian Anda</div>';
+                    return;
+                }
+                
+                filteredChars.forEach(character => {
+                    const characterCard = document.createElement('div');
+                    characterCard.className = 'character-card';
+                    
+                    // Highlight teks yang cocok dengan pencarian
+                    const highlightedName = highlightText(character.name, filter);
+                    const highlightedSubtitle = highlightText(character.subtitle, filter);
+                    
+                    characterCard.innerHTML = `
+                        <div class="character-header">
+                            <img src="${character.avatar}" alt="${character.name}" class="character-avatar">
+                            <div class="character-name">
+                                <h2>${highlightedName}</h2>
+                                <h3>${highlightedSubtitle}</h3>
+                            </div>
+                        </div>
+                        <hr>
+                        <p><strong>Spesial Item:</strong> ${character.specialItems}</p>
+                        <p><strong>Favorit Item:</strong> ${character.favoriteItems}</p>
+                    `;
+                    
+                    characterList.appendChild(characterCard);
+                });
+            }
+            
+            // Fungsi untuk menyorot teks yang cocok
+            function highlightText(text, term) {
+                if (!term) return text;
+                
+                const regex = new RegExp(`(${term})`, 'gi');
+                return text.replace(regex, '<span class="highlight">$1</span>');
+            }
+            
+            // Pencarian real-time
+            searchBox.addEventListener('input', function() {
+                displayCharacters(this.value);
+            });
+            
+            // Tampilkan semua karakter saat pertama kali load
+            displayCharacters();
+        });
+    </script>
 </body>
 </html>
